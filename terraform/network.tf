@@ -1,17 +1,28 @@
-resource "aws_vpc" "cocalc" {
-  cidr_block = "10.200.0.0/16"
-
+resource aws_default_vpc default {
   tags = {
-    Name = "cocalc"
+    Name = "Default VPC"
   }
 }
 
-resource "aws_subnet" "cocalc_subnet" {
-  vpc_id = "${aws_vpc.cocalc.id}"
+# resource "aws_vpc" "cocalc" {
+#   cidr_block = "10.200.0.0/16"
 
-  cidr_block = "10.200.1.0/24"
 
-  tags {
-    Name = "cocalc"
-  }
-}
+#   tags {
+#     Name = "cocalc"
+#   }
+# }
+
+
+# resource "aws_subnet" "cocalc_subnet" {
+#   vpc_id = "${aws_vpc.cocalc.id}"
+
+
+#   cidr_block = "10.200.1.0/24"
+
+
+#   tags {
+#     Name = "cocalc"
+#   }
+# }
+
