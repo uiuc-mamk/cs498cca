@@ -1,5 +1,9 @@
+clean:
+	rm -f plan
+
 plan:
 	terraform plan -var-file=mamk.tfvars -out plan
 
-apply:
-	terraform apply -f plan
+apply: plan
+	terraform apply plan
+	rm -f plan
