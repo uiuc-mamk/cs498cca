@@ -4,7 +4,7 @@ resource "aws_key_pair" "cocalc" {
 }
 
 resource "aws_instance" "cocalc" {
-  count                       = 1
+  count                       = 0
   ami                         = "${var.ami_id}"
   instance_type               = "t2.micro"
   key_name                    = "cocalc"
