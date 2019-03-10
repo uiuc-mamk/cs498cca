@@ -10,8 +10,14 @@ resource "aws_instance" "cocalc" {
   key_name                    = "cocalc"
   associate_public_ip_address = true
   vpc_security_group_ids      = ["${aws_security_group.cocalc.id}"]
+  availability_zone           = "${var.az}"
 
-  tags = {
+  root_block_device {
+    delete_on_termination = true
+    volume_size           = 20
+  }
+
+  tags {
     Name = "cocalc"
   }
 }
