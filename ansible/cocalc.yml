@@ -1,5 +1,7 @@
 ---
 - hosts: cocalc
+  gather_facts: no
   roles:
+    - python
     - docker
     - cocalc

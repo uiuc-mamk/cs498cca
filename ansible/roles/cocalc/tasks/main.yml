@@ -1,0 +1,30 @@
+---
+- name: Ensure the data directory is created
+  file:
+    path: /data
+    state: directory
+  become: yes
+
+- name: Ensure the data volume is formatted
+  filesystem:
+    fstype: ext4
+    dev: /dev/nvme1n1
+  become: yes
+
+- name: Mount the data volume to the data directory
+  mount:
+    path: /data
+    src: /dev/nvme1n1
+    fstype: ext4
+    state: mounted
+  become: yes
+
+- name: Run cocalc docker image
+  docker_container:
+    name: cocalc
+    image: sagemathinc/cocalc:latest
+    volumes:
+      - /data/cocalc:/projects
+    ports:
+      - 443:443
+  become: yes
