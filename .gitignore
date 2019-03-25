@@ -10,3 +10,4 @@
 
 env.sh
 terraform/keys/id_rsa
+*.tfplan

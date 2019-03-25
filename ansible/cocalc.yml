@@ -1,0 +1,5 @@
+---
+- hosts: cocalc
+  roles:
+    - docker
+    - cocalc

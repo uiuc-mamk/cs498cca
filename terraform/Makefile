@@ -1,9 +1,9 @@
 clean:
-	rm -f plan
+	rm -f *.tfplan
 
 plan:
-	terraform plan -var-file=mamk.tfvars -out plan
+	terraform plan -var-file=mamk.tfvars -out cocalc.tfplan
 
 apply: plan
-	terraform apply plan
-	rm -f plan
+	terraform apply cocalc.tfplan
+	rm -f cocalc.plan

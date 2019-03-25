@@ -4,9 +4,9 @@ resource "aws_key_pair" "cocalc" {
 }
 
 resource "aws_instance" "cocalc" {
-  count                       = 0
+  count                       = 1
   ami                         = "${var.ami_id}"
-  instance_type               = "t2.micro"
+  instance_type               = "t3.medium"
   key_name                    = "cocalc"
   associate_public_ip_address = true
   vpc_security_group_ids      = ["${aws_security_group.cocalc.id}"]
