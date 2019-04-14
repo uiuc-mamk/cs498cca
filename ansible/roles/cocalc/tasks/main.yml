@@ -8,13 +8,13 @@
 - name: Ensure the data volume is formatted
   filesystem:
     fstype: ext4
-    dev: /dev/nvme1n1
+    dev: /dev/nvme0n1
   become: yes
 
 - name: Mount the data volume to the data directory
   mount:
     path: /data
-    src: /dev/nvme1n1
+    src: /dev/nvme0n1
     fstype: ext4
     state: mounted
   become: yes
@@ -23,6 +23,9 @@
   docker_container:
     name: cocalc
     image: sagemathinc/cocalc:latest
+    memory: 3G
+    cpu_period: 100000
+    cpu_quota: 150000
     volumes:
       - /data/cocalc:/projects
     ports:

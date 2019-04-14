@@ -1,4 +1,5 @@
 resource "aws_elb" "cocalc" {
+  count              = 0
   name               = "cocalc-elb"
   availability_zones = ["${var.az}"]
 

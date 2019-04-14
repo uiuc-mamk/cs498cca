@@ -33,3 +33,4 @@
 - name: Install docker python client
   pip:
     name: docker
+  become: yes
